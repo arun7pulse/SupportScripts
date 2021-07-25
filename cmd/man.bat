@@ -1,3 +1,8 @@
+REM Author: ArunSanthoshKumar Annamalai (@arun7pulse)
+REM Date: 01-01-2017
+REM Version: 1.0
+REM Description: this will help create the help section in batch files. 
+cls 
 @ECHO OFF
 SETLOCAL
 REM # Description:

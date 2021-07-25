@@ -1,5 +1,8 @@
-
-
+REM Author ArunSanthoshKumar
+REM Date: 01-01-2017
+REM Version: 1.0
+REM Description: Lis the User logged into the machine. 
+cls 
 @echo off
 REM When this script is called with "/?" all lines with "REM(space)#" will be displayed as help.
 IF /I "%~1" EQU "/?" (

@@ -1,5 +1,9 @@
+REM Author ArunSanthoshKumar
+REM Date: 01-01-2017
+REM Version: 1.0
+REM Description: Find the Diskusgage of the folder. 
+cls 
 @echo off
-cls
 set arg1=%~1
 
 echo Run the script using the following methos 

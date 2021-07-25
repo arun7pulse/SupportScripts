@@ -1,3 +1,10 @@
+REM Author: ArunSanthoshKumar Annamalai (@arun7pulse)
+REM Date: 01-01-2017
+REM Version: 1.0
+REM Description: Find the Total, Free space avaialble. 
+cls 
+@echo on
+
 @ECHO OFF
 :: Display the disk space in MB used by the subdirectories
 :: of the directory represented by %1, plus a grand total
