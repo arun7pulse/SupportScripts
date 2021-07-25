@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Nov  9 11:11:13 2020
-
-@author: ARANNAMALAI
-"""
+#!/usr/bin/env python3
+# Author: ArunSanthoshKumar Annamalai (@arun7pulse)
+# Date: 26-May-2019
+# Description: This script is used to count the words and letters. 
 
 def count_letters(text, sort=False):
     result ={}
@@ -13,6 +11,7 @@ def count_letters(text, sort=False):
         result[letter]+=1
     if sort:
         return {k:v for k,v in sorted(result.items(), key=lambda item: item[1])}
+    print(result)
     return result 
 
 def count_words(sentence, sort=False):
@@ -25,11 +24,11 @@ def count_words(sentence, sort=False):
         result[word]+=1
     if sort:
         return {k:v for k,v in sorted(result.items(), key=lambda item: item[1])}
+    print(result)
     return result 
 
-sam= count_letters("arunsanthoshkumar annamalai")
-
-print(sam)
-
-same= count_words("arunsanthoshkumar annamalai", sort=True)
-print(same)
+if __name__ == '__main__':
+    print("Letters:")
+    count_letters('Hello World')
+    print("Words:")
+    count_words('Hello World')
