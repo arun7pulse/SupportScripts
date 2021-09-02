@@ -1,0 +1,48 @@
+get https://www.nseindia.com/api/marketStatus
+
+{
+    "marketState":[
+        {"market":"Capital Market","marketStatus":"Open","tradeDate":"28-Apr-2021","index":"NIFTY 50","last":14751.25,"variation":98.20000000000073,"percentChange":0.67,"marketStatusMessage":"Normal Market is Open"},
+        {"market":"Currency","marketStatus":"Open","tradeDate":"28-Apr-2021","index":"","last":"","variation":"","percentChange":"","marketStatusMessage":"Market is Open"},
+        {"market":"Commodity","marketStatus":"Open","tradeDate":"28-Apr-2021","index":"","last":"","variation":"","percentChange":"","marketStatusMessage":"Market is Open"},
+        {"market":"Debt","marketStatus":"Open","tradeDate":"28-Apr-2021","index":"","last":"","variation":"","percentChange":"","marketStatusMessage":"Market is Open"}
+        ]
+    }
+
+
+
+
+
+curl 'https://www.nseindia.com/api/marketStatus' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36' \
+  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+  -H 'authority: www.nseindia.com' \
+  -H 'cache-control: max-age=0' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'dnt: 1' \
+  -H 'upgrade-insecure-requests: 1' \
+  -H 'sec-fetch-site: none' \
+  -H 'sec-fetch-mode: navigate' \
+  -H 'sec-fetch-user: ?1' \
+  -H 'sec-fetch-dest: document' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'cookie: _ga=GA1.2.1351998907.1618200599; nsit=r080pguwWi2d0yz-tjfGRnoG; AKA_A2=A; _gid=GA1.2.1000863316.1620733781; ak_bmsc=15621EFEB4F754F65FAF2FF667D9E5C57BB02035B85F0000546F9A608DE95A52~plNpo3J5oWHR6GfW0wHXva4EYqJZWS5+j53MPNYNcwuOorMN5mwnpOW+tle0z2wbglaETRSyVmfwLF+YdvqJXfMNnDf2S/nSzsHaG7QADcsJDb5OVGtDKtmrH2+mmI3tbzbZxVWn3wamY/fiaLR0kXPIt5cr3SMYBaofKc94vF9G6ZREVwGmEm6ZZkxGT+jzzEWtwSmrtEJ//t8axfcfJhHPq9IUWZ5NrnJNSE1g11kENJhIPdN/7qDV1KiPzLkmBx; nseappid=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkubnNlIiwiYXVkIjoiYXBpLm5zZSIsImlhdCI6MTYyMDczMzgxNiwiZXhwIjoxNjIwNzM3NDE2fQ.XbYLAqKeXTIdxignU7zLVbXHhdUiqOhVkzL9D37EycU; nseQuoteSymbols=[{"symbol":"NIFTY","identifier":null,"type":"equity"}]; RT="z=1&dm=nseindia.com&si=f5b84f9a-7ba1-4a2a-bcaf-776b629f128b&ss=kojz1obh&sl=6&tt=65x&bcn=%2F%2F684d0d37.akstat.io%2F&ld=24xf&ul=4ani&hd=4ao0"; bm_sv=44097C7C47D579FE4F83E3AD1DBD2F4E~sVoMRoE/94y/IldnpiuqGCciA9+Mo4tGx3SU+4pgRw7rdz+cDm7bdj3zEatgDyH6C5MqVpHB/t0YxqAOvVCBkqPq+iGSOUoc0HrJp8N632UVDBedEEkTUMtVCIioXJYlg7hQDmEt2qbgst4jBFflp91ROa5YF8FDTLdpGJccW+M=' \
+  --compressed
+
+
+curl 'https://www.nseindia.com/api/historical/cm/equity?symbol=COALINDIA&series=\[%22EQ%22\]&from=11-05-2020&to=11-05-2021&csv=true' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36' \  
+  -H 'authority: www.nseindia.com' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"' \
+  -H 'accept: */*' \
+  -H 'dnt: 1' \
+  -H 'x-requested-with: XMLHttpRequest' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: https://www.nseindia.com/get-quotes/equity?symbol=COALINDIA' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'cookie: _ga=GA1.2.1351998907.1618200599; _gid=GA1.2.1000863316.1620733781; ak_bmsc=15621EFEB4F754F65FAF2FF667D9E5C57BB02035B85F0000546F9A608DE95A52~plNpo3J5oWHR6GfW0wHXva4EYqJZWS5+j53MPNYNcwuOorMN5mwnpOW+tle0z2wbglaETRSyVmfwLF+YdvqJXfMNnDf2S/nSzsHaG7QADcsJDb5OVGtDKtmrH2+mmI3tbzbZxVWn3wamY/fiaLR0kXPIt5cr3SMYBaofKc94vF9G6ZREVwGmEm6ZZkxGT+jzzEWtwSmrtEJ//t8axfcfJhHPq9IUWZ5NrnJNSE1g11kENJhIPdN/7qDV1KiPzLkmBx; nsit=jaMmj8ivvbScuipO0QXfiyJd; AKA_A2=A; _gat_UA-143761337-1=1; nseappid=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkubnNlIiwiYXVkIjoiYXBpLm5zZSIsImlhdCI6MTYyMDczODIyMywiZXhwIjoxNjIwNzQxODIzfQ.Zqkt3SeDywnxTC9O_hI4DH5QvQ9NJes_utMv0KN3Fd0; nseQuoteSymbols=[{"symbol":"NIFTY","identifier":null,"type":"equity"},{"symbol":"COALINDIA","identifier":null,"type":"equity"}]; bm_sv=44097C7C47D579FE4F83E3AD1DBD2F4E~sVoMRoE/94y/IldnpiuqGCciA9+Mo4tGx3SU+4pgRw7rdz+cDm7bdj3zEatgDyH6C5MqVpHB/t0YxqAOvVCBkqPq+iGSOUoc0HrJp8N632WGMa09eEhNcG2p4ymWPTfuKJuxyiePOk2J4HdrkkkXz6hTLqTtJQSWd15od5cNiao=; RT="z=1&dm=nseindia.com&si=f5b84f9a-7ba1-4a2a-bcaf-776b629f128b&ss=kok1hiol&sl=6&tt=3gb&bcn=%2F%2F684fc53c.akstat.io%2F&nu=ed8553192c8d124be55949cc1b2e99dc&cl=7yj9"' \
+  --compressed

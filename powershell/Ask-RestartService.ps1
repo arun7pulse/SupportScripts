@@ -1,12 +1,12 @@
 # Author - ArunSK.
 
 Param ( 
-[Parameter(Mandatory=$true)] [String]$ServiceName 
-) 
- 
+    [Parameter(Mandatory=$true)] 
+    [String]$ServiceName = 'tomcat9' 
+    ) 
 [System.Collections.ArrayList]$ServicesToRestart = @() 
- 
-function Custom-GetDependServices ($ServiceInput) 
+
+Function Get-AskDependentServices ($ServiceInput) 
 { 
     #Write-Host "Name of `$ServiceInput: $($ServiceInput.Name)" 
     #Write-Host "Number of dependents: $($ServiceInput.DependentServices.Count)" 
@@ -14,14 +14,14 @@ function Custom-GetDependServices ($ServiceInput)
     { 
         ForEach ($DepService in $ServiceInput.DependentServices) 
         { 
-            #Write-Host "Dependent of $($ServiceInput.Name): $($Service.Name)" 
+            Write-Host "Dependent of $($ServiceInput.Name): $($Service.DependentServices.Name)" 
             If ($DepService.Status -eq "Running") 
             { 
                 #Write-Host "$($DepService.Name) is running." 
                 $CurrentService = Get-Service -Name $DepService.Name 
                  
                 # get dependancies of running service 
-                Custom-GetDependServices $CurrentService                 
+                Get-AskDependentServices $CurrentService                 
             } 
             Else 
             { 
@@ -33,29 +33,27 @@ function Custom-GetDependServices ($ServiceInput)
     Write-Host "Service to restart $($ServiceInput.Name)" 
     if ($ServicesToRestart.Contains($ServiceInput.Name) -eq $false) 
     { 
-        Write-Host "Adding service to restart $($ServiceInput.Name)" 
+        #Write-Host "Adding service to restart $($ServiceInput.Name)" 
         $ServicesToRestart.Add($ServiceInput.Name) 
     } 
 } 
  
+
 # Get the main service 
 $Service = Get-Service -Name $ServiceName 
- 
+write-host "Service Name: $($Service)"
 # Get dependancies and stop order 
-Custom-GetDependServices -ServiceInput $Service 
- 
- 
-Write-Host "-------------------------------------------" 
-Write-Host "Stopping Services" 
-Write-Host "-------------------------------------------" 
+Get-AskDependentServices -ServiceInput $Service 
+
+Write-Host "*** Stopping Services ***" 
 foreach($ServiceToStop in $ServicesToRestart) 
 { 
     Write-Host "Stop Service $ServiceToStop" 
-    Stop-Service $ServiceToStop -Verbose #-Force 
+    Stop-Service $ServiceToStop -Verbose -Force 
 } 
-Write-Host "-------------------------------------------" 
-Write-Host "Starting Services" 
-Write-Host "-------------------------------------------" 
+
+Write-Host "*** Restart Services ***" 
+
 # Reverse stop order to get start order 
 $ServicesToRestart.Reverse() 
  
@@ -64,6 +62,7 @@ foreach($ServiceToStart in $ServicesToRestart)
     Write-Host "Start Service $ServiceToStart" 
     Start-Service $ServiceToStart -Verbose 
 } 
-Write-Host "-------------------------------------------" 
-Write-Host "Restart of services completed" 
-Write-Host "-------------------------------------------" 
+Write-Host "*** Service Restart Completed. ***" 
+
+$Service = Get-Service -Name $ServiceName 
+write-host "Service Name: $($Service)"

@@ -1,14 +1,13 @@
-﻿
-function Get-DiskDetails {
+﻿function Get-AskDiskDetails {
         <#
         .SYNOPSIS 
                 Get disk space details
         .PARAMETER computername 
                 Specifies ta single computer name or Ip Address 
         .EXAMPLE 
-                Get-DiskDetails -ComputernName localhost
+                Get-AskDiskDetails -ComputerName localhost 
         .AUTHOR
-                ArunSanthoshKumar Annamalai (@arun7pulse)
+                .NAME ArunSanthoshKumar Annamalai (@arun7pulse)
         #>
         [CmdletBinding()]
         param (
@@ -16,7 +15,7 @@ function Get-DiskDetails {
         )
         
         begin {
-                Write-Debug -Message "Retrieving disk info for $ComputerName"
+                Write-Debug -Message "Started"
         }
         
         process {
@@ -35,9 +34,9 @@ function Get-DiskDetails {
         }
         
         end {
-                Write-Debug -Message "Disk info retrieved for $ComputerName"
+                Write-Debug -Message "Ended"
         }
 }
 
 
-Get-DiskDetails -ComputerName localhost 
+Get-AskDiskDetails -ComputerName localhost 
